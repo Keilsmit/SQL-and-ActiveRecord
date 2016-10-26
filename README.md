@@ -1,20 +1,25 @@
 
 
 1) How many users are there?
+  
   'SELECT COUNT(*) FROM "users"`
           Answer: 51
   
 2) What are the 5 most expensive items?
+  
   `Item.order(price: :desc).limit(5)`
   
 3) What's the cheapest book?
+  
   `Item.where(:category => 'Books').order(price: :asc).limit(1)`
   
 4) Who lives at "6439 Zetta Hills, Willmouth, WY"? Do they have another address?
+   
    `Address.where(street: '6439 Zetta Hills')` 
 
  part 2:
-  `user.where(id: '40')`
+ 
+ `user.where(id: '40')`
 
  Part 3:
 
@@ -26,6 +31,7 @@
   `User.where(:first_name => '%Virginie%', :last_name => '%Mitchell%')`
   
    part 2:
+    
     `User.where(:id => '39')`
   
   Part3:
@@ -41,6 +47,7 @@
    `Order.sum(:quantity)`
 
 8) How much was spent on books?
+
 'Order.select("SUM (orders.quantity * items.price) as total").joins(:item).where("items.category Like'%Books%'").first.total'
              
       Answer: 1081352
