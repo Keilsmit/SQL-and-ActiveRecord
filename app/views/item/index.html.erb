@@ -1,0 +1,49 @@
+<div class="text-center">
+  <h4> My Store on Rails</h4>
+  <br>
+  <br>
+</div>
+
+<%= link_to "New Item", new_item_path %>
+
+<table class="table table-striped table-hover text-center">
+  <tr>
+    <th scope="col">Title</th>
+    <th scope="col">Description</th>
+    <th scope="col">Category</th>
+    <th scope="col">Price</th>
+    <th scope="col">Total Quantity Ordered</th>
+  </tr>
+
+    <% @item.each do |item| %>
+
+  <tr>
+    <td>
+      <%= item.title %>
+    </td>
+
+    <td>
+      <%= item.description%>
+    </td>
+
+    <td>
+      <%=item.category%>
+    </td>
+
+    <td>
+      <%= number_to_currency(item.price/100)%>
+    </td>
+
+    <td>
+      <%= item.orders.sum(:quantity)%>
+    </td>
+
+    <td>
+      <%= link_to "Edit Item", edit_item_path(id: item.id) %>
+    </td>
+  </tr>
+
+
+
+  <%end%>
+</table>
