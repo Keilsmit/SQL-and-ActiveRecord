@@ -2,7 +2,7 @@ class ItemController < ApplicationController
 
   # Lists all the posts
   def index
-    @item = Item.order(quantity: :desc)
+    @item = Item.all
   end
 
   def new
