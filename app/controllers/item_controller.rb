@@ -2,7 +2,7 @@ class ItemController < ApplicationController
 
   # Lists all the posts
   def index
-    @item = Item.all
+    @item = Item.order(quantity: :desc)
   end
 
   def new
@@ -39,6 +39,10 @@ class ItemController < ApplicationController
     @item.category = params[:item][:category]
     @item.save
     redirect_to root_path
+  end
+
+  def item_params
+    params.require(:item).permit(:title, :description, :price, :category)
   end
 
 
